@@ -8,13 +8,14 @@
     body {
       font-family: Arial, sans-serif;
       background-color: #f5f5f5;
+      margin: 0;
     }
 
     .sidebar {
       width: 220px;
       height: 100vh;
       position: fixed;
-      background-color: #c8102e; /* Rojo UCV */
+      background-color: #c8102e;
       color: white;
       padding: 20px;
     }
@@ -51,7 +52,6 @@
       color: #c8102e;
     }
 
-    /* Encabezado de la tabla */
     .tabla-ucv thead th {
       background-color: #c8102e !important;
       color: white !important;
@@ -62,6 +62,11 @@
     .table tbody tr:hover {
       background-color: #f0f0f0;
     }
+
+    .section { display: none; }
+    .active { display: block; }
+    .gallery img { width: 200px; height: 120px; object-fit: cover; margin-right: 15px; border-radius: 8px; }
+    .form-control { margin-bottom: 15px; }
   </style>
 </head>
 <body>
@@ -70,81 +75,135 @@
   <div class="sidebar">
     <h4>UCV Dashboard</h4>
     <ul>
-      <li>Inicio</li>
-      <li>Reportes</li>
-      <li>Galería</li>
-      <li>Contacto</li>
+      <li onclick="mostrarSeccion('inicio')">Inicio</li>
+      <li onclick="mostrarSeccion('reportes')">Reportes</li>
+      <li onclick="mostrarSeccion('galeria')">Galería</li>
+      <li onclick="mostrarSeccion('contacto')">Contacto</li>
     </ul>
   </div>
 
   <!-- CONTENIDO PRINCIPAL -->
   <div class="main">
-    <h2 class="text-center">Dashboard Académico - UCV </h2>
 
-    <!-- CARDS -->
-    <div class="row text-center mt-4">
-      <div class="col-md-4">
-        <div class="card shadow p-3 mb-4">
-          <h5>Estudiantes</h5>
-          <p class="display-6">1200</p>
-          <p>Registrados</p>
+    <!-- INICIO -->
+    <div id="inicio" class="section active">
+      <h2 class="text-center">Dashboard Académico - UCV</h2>
+      <div class="row text-center mt-4">
+        <div class="col-md-4">
+          <div class="card shadow p-3 mb-4">
+            <h5>Estudiantes</h5>
+            <p class="display-6">1200</p>
+            <p>Registrados</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow p-3 mb-4">
+            <h5>Profesores</h5>
+            <p class="display-6">80</p>
+            <p>Activos</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow p-3 mb-4">
+            <h5>Cursos</h5>
+            <p class="display-6">45</p>
+            <p>Disponibles</p>
+          </div>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="card shadow p-3 mb-4">
-          <h5>Profesores</h5>
-          <p class="display-6">80</p>
-          <p>Activos</p>
+
+      <h4 class="mt-2">Información académica</h4>
+      <table class="table tabla-ucv mt-3 shadow-sm">
+        <thead>
+          <tr>
+            <th>Curso</th>
+            <th>Profesor</th>
+            <th>Horario</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Diseño Digital II</td><td>Lic. Jhon Robert Trinidad Tanta</td><td>13:00 - 18:00</td></tr>
+          <tr><td>Diseño Web</td><td>Lic. Rosangela Abregú Marcos</td><td>7:30 - 12:00</td></tr>
+          <tr><td>Psicología del Target</td><td>Lic. Silvia Liliana Rodas Espinoza</td><td>7:30 - 11:00</td></tr>
+          <tr><td>Filosofía y Ética</td><td>Lic. Afranio Uriel Huaytan Jaramillo</td><td>7:30 - 11:00</td></tr>
+          <tr><td>Creatividad e Innovación</td><td>Lic. María Consuelo Chata Nuñez</td><td>7:30 - 11:00</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- REPORTES -->
+    <div id="reportes" class="section">
+      <h2 class="text-center">Reportes Académicos</h2>
+      <div class="row text-center mt-4">
+        <div class="col-md-4">
+          <div class="card shadow p-4">
+            <img src="https://img.icons8.com/ios-filled/100/attendance-mark.png" width="50"/>
+            <h5 class="mt-2">Asistencia</h5>
+            <p>Promedio de asistencia del semestre actual</p>
+          </div>
         </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card shadow p-3 mb-4">
-          <h5>Cursos</h5>
-          <p class="display-6">45</p>
-          <p>Disponibles</p>
+        <div class="col-md-4">
+          <div class="card shadow p-4">
+            <img src="https://img.icons8.com/ios-filled/100/report-card.png" width="50"/>
+            <h5 class="mt-2">Calificaciones</h5>
+            <p>Resumen de calificaciones y promedios</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow p-4">
+            <img src="imagenes/matricula.png" width="50"/>
+            <h5 class="mt-2">Matrícula</h5>
+            <p>Estado de la matrícula estudiantil</p>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- TABLA DE CURSOS -->
-    <h4 class="mt-2">Información académica</h4>
-    <table class="table tabla-ucv mt-3 shadow-sm">
-      <thead>
-        <tr>
-          <th>Curso</th>
-          <th>Profesor</th>
-          <th>Horario</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Diseño Digital II</td>
-          <td>Lic. Jhon Robert Trinidad Tanta</td>
-          <td>13:00 - 18:00</td>
-        </tr>
-        <tr>
-          <td>Diseño Web</td>
-          <td>Lic. Rosangela Abregú Marcos</td>
-          <td>7:30 - 12:00</td>
-        </tr>
-        <tr>
-          <td>Psicología del Target</td>
-          <td>Lic. Silvia Liliana Rodas Espinoza</td>
-          <td>7:30 - 11:00</td>
-        </tr>
-        <tr>
-            <td>Filosofía y Ética</td>
-            <td>Lic. Afranio Uriel Huaytan Jaramillo</td>
-            <td>7:30 - 11:00</td>
-          </tr>
-          <tr>
-            <td>Creatividad e Innovación</td>
-            <td>Lic. María Consuelo Chata Nuñez</td>
-            <td>7:30 - 11:00</td>
-          </tr>
-      </tbody>
-    </table>
+    <!-- GALERÍA -->
+    <div id="galeria" class="section">
+      <h2 class="mb-4">Galería Académica</h2>
+      <div class="gallery d-flex">
+        <div>
+          <img src="imagenes/images.jpg" alt="Conferencia 2025">
+          <p>Conferencia 2025</p>
+        </div>
+        <div>
+          <img src="imagenes/graduacion.jpg" alt="Graduación 2025">
+          <p>Graduación 2025</p>
+        </div>
+        <div>
+          <img src="imagenes/ciencias.jpg" alt="Feria de Ciencia">
+          <p>Feria de Ciencia</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTACTO -->
+    <div id="contacto" class="section">
+      <h2 class="mb-4">Contacto</h2>
+      <form>
+        <label><strong>Nombre:</strong></label>
+        <input type="text" class="form-control" placeholder="Tu nombre">
+
+        <label><strong>Correo electrónico:</strong></label>
+        <input type="email" class="form-control" placeholder="tu@email.com">
+
+        <label><strong>Mensaje:</strong></label>
+        <textarea class="form-control" rows="4" placeholder="Escribe tu mensaje"></textarea>
+
+        <button class="btn btn-primary mt-3">Enviar</button>
+      </form>
+    </div>
+
   </div>
+
+  <script>
+    function mostrarSeccion(id) {
+      const secciones = document.querySelectorAll('.section');
+      secciones.forEach(sec => sec.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
 
 </body>
 </html>
